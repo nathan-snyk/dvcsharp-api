@@ -71,29 +71,29 @@ namespace dvcsharp_core_api
       [Authorize]
       [HttpGet("import")]
       public async Task<IActionResult> Import()
-      {
-         HttpClient client = new HttpClient();
-         var url = HttpContext.Request.Query["url"].ToString();
+      // {
+      //    HttpClient client = new HttpClient();
+      //    var url = HttpContext.Request.Query["url"].ToString();
 
-         string responseBody = null;
-         string errorMsg = "Success";
+      //    string responseBody = null;
+      //    string errorMsg = "Success";
 
-         try {
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            responseBody = await response.Content.ReadAsStringAsync();
+      //    try {
+      //       HttpResponseMessage response = await client.GetAsync(url);
+      //       response.EnsureSuccessStatusCode();
+      //       responseBody = await response.Content.ReadAsStringAsync();
 
-            MockUserImport(responseBody);
-         }
-         catch(Exception e) {
-            errorMsg = e.Message;
-         }
+      //       MockUserImport(responseBody);
+      //    }
+      //    catch(Exception e) {
+      //       errorMsg = e.Message;
+      //    }
 
-         return Ok(new JObject(
-            new JProperty("Error", errorMsg),
-            new JProperty("Content", responseBody)
-         ));
-      }
+      //    return Ok(new JObject(
+      //       new JProperty("Error", errorMsg),
+      //       new JProperty("Content", responseBody)
+      //    ));
+      // }
 
       private void MockUserImport(string data)
       {
